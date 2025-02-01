@@ -7,5 +7,5 @@ public interface Page {
     void setDirty(boolean dirty);
     boolean isDirty();
     int getPageNumber();
-    byte[] getDate();
+    byte[] getData();
 }

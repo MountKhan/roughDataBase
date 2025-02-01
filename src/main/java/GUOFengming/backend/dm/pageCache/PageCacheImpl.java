@@ -104,6 +104,7 @@ public class PageCacheImpl extends AbstractCache<Page> implements PageCache {
             Panic.panic(e);
         }
         fileLock.unlock();
+        //包装成一个page对象返回
         return new PageImpl(pgno,buf.array(),this);
     }
 
@@ -123,7 +124,7 @@ public class PageCacheImpl extends AbstractCache<Page> implements PageCache {
         fileLock.lock();
         try{
             //读取page数据
-            ByteBuffer buf = ByteBuffer.wrap(pg.getDate());
+            ByteBuffer buf = ByteBuffer.wrap(pg.getData());
             fc.position(offset);
             //写入内存
             fc.write(buf);
